@@ -2,16 +2,19 @@ name: CI
 on:
   push:
     branches:
-      - '**'
+      - "**"
   pull_request:
-    branches:
-      - '**'
+    branches: 
+      - "**"
   workflow_dispatch:
 
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       - name: Find yarn cache location
@@ -29,8 +32,8 @@ jobs:
       - name: Install Node Modules
         run: yarn install
 
-      - name: Check Typescript Compilation
+      - name: Check Typescript
         run: yarn ts:check
 
-      - name: Run Code Lint
+      - name: Run Lint
         run: yarn lint
