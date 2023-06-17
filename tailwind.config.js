@@ -11,7 +11,7 @@ module.exports = {
       primary: '#F12B01',
       white: '#fff',
       black: '#000',
-      gray: '#EEEEEE',
+      gray: '#F5F4F4',
       'gray-light': '#9D9D9D',
     },
     extend: {
