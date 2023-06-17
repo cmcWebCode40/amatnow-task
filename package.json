@@ -12,6 +12,7 @@
     "format": "npx prettier . --write",
     "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
+    "create:eas-secret": "eas secret:push --scope project --env-file .env --force",
     "build:staging:android": "eas build --profile preview --platform android"
   },
   "dependencies": {
