@@ -2,7 +2,7 @@
 
 ## Demo
 
-- APK build : [link to download APK](https://expo.dev/accounts/cmcwebcode/projects/amat-now-task/builds/ba8b83d3-e98c-4dde-8b79-9e0cf36878e9)
+- APK build : [link to download APK](https://expo.dev/accounts/cmcwebcode/projects/amat-now-task/builds/63496e82-dbf3-4047-8590-523a5db0d4ea)
 
 ## Technologies
 
