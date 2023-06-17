@@ -2,7 +2,11 @@ on:
   # push:
   #   branches:
   #     - develop
-    push:
+  push:
+    branches:
+      - '**'
+
+  pull_request:
     branches:
       - '**'
 jobs:
