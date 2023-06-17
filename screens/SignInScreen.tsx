@@ -1,6 +1,7 @@
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
 import React from 'react';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 import {
   Button,
   FormInput,
@@ -15,8 +16,8 @@ import { LoginAuthFields } from '../libs/types';
 import useAuth from '../libs/useAuth';
 
 const formInitialValues = {
-  "email": "",
-  "password": ""
+  email: '',
+  password: '',
 };
 const segmentItems = [' Create Account', 'Login'];
 
@@ -50,9 +51,11 @@ const SignInScreen: React.FunctionComponent = () => {
           }) => (
             <StyledView className='flex-1 justify-between flex-col h-auto mb-4'>
               {isLoading && <Loader isLoading={isLoading} />}
-              <KeyboardAwareScrollView style={{
-                minHeight: 300
-              }}>
+              <KeyboardAwareScrollView
+                style={{
+                  minHeight: 300,
+                }}
+              >
                 <StyledView className='space-y-4'>
                   <StyledView>
                     <Typography className='font-semibold my-2'>

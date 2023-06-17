@@ -1,7 +1,10 @@
 on:
-  push:
+  # push:
+  #   branches:
+  #     - develop
+    push:
     branches:
-      - develop
+      - '**'
 jobs:
   build:
     runs-on: ubuntu-latest

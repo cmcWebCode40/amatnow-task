@@ -15,15 +15,17 @@ const Segment: React.FunctionComponent<SegmentProps> = ({ items }) => {
       {items.map((item, index) => (
         <StyledPressable
           key={item}
-          className={`flex-1 ${index !== value
-            ? ''
-            : 'h-10 py-2 flex-1 bg-white rounded-full shadow-md'
-            }`}
+          className={`flex-1 ${
+            index !== value
+              ? ''
+              : 'h-10 py-2 flex-1 bg-white rounded-full shadow-md'
+          }`}
         >
           <Typography
             variant='sm'
-            className={`text-center ${index !== value ? '' : 'text-primary font-semibold'
-              }`}
+            className={`text-center ${
+              index !== value ? '' : 'text-primary font-semibold'
+            }`}
           >
             {item}
           </Typography>

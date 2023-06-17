@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { AuthContextProvider } from './libs/AuthContext';
 
+import { AuthContextProvider } from './libs/AuthContext';
 import RootNavigation from './navigations/RootNavigation';
 
 const App: React.FunctionComponent = () => {

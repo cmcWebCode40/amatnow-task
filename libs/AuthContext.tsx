@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import axios from 'axios';
-import React, { createContext, useEffect, useState } from 'react';
-import { useCallback } from 'react';
+import React, { createContext, useCallback, useEffect, useState } from 'react';
+
 import config from './config';
 import { AUTH_TOKEN } from './constants';
 import { LoginAuthFields } from './types';
@@ -24,8 +25,8 @@ type AuthContextProvider = {
 };
 
 export const AuthContext = createContext<DefaultContext>({
-  logout: async () => { },
-  login: async () => { },
+  logout: async () => {},
+  login: async () => {},
   error: undefined,
   isLoading: false,
   isAuthenticated: false,
@@ -48,7 +49,7 @@ export const AuthContextProvider: React.FunctionComponent<
       try {
         const authToken = await getFromSecureStore(AUTH_TOKEN);
         if (!authToken) {
-          return
+          return;
         }
         setIsAuthenticated(true);
       } catch (error) {
@@ -58,8 +59,8 @@ export const AuthContextProvider: React.FunctionComponent<
       } finally {
         setIsLoading(false);
       }
-    })()
-  }, [])
+    })();
+  }, []);
 
   const login = useCallback(async (data: LoginAuthFields) => {
     setIsLoading(true);

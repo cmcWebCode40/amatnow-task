@@ -13,18 +13,16 @@ export const deleteFromSecureStore = async (key: string) => {
   return await SecureStore.deleteItemAsync(key);
 };
 
-
-
-export const errorHandler =(error:Error)=> { 
+export const errorHandler = (error: unknown) => {
   if (axios.isAxiosError(error)) {
-    if (error.response) { 
-      return error.response.data.message
+    if (error.response) {
+      return error.response.data.message;
     } else {
-      return error.message
+      return error.message;
     }
-  } 
+  }
 
   if (error instanceof Error) {
-     return error.message
+    return error.message;
   }
-}
+};
