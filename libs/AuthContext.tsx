@@ -53,9 +53,8 @@ export const AuthContextProvider: React.FunctionComponent<
         }
         setIsAuthenticated(true);
       } catch (error) {
-        if (error instanceof Error) {
-          setError(error.message);
-        }
+        const errorMessage = errorHandler(error);
+        setError(errorMessage);
       } finally {
         setIsLoading(false);
       }
@@ -65,13 +64,13 @@ export const AuthContextProvider: React.FunctionComponent<
   const login = useCallback(async (data: LoginAuthFields) => {
     setIsLoading(true);
     try {
+      setError(undefined);
       const response = await axios.post(`${config.baseApi}/auth/login`, data, {
         headers,
       });
       await saveToSecureStore(AUTH_TOKEN, response.data.access_token);
-      // setIsLoading(false);
+      setIsLoading(false);
       setIsAuthenticated(true);
-      // console.log(response.data.access_token);
     } catch (error) {
       const errorMessage = errorHandler(error);
       setError(errorMessage);
@@ -85,10 +84,10 @@ export const AuthContextProvider: React.FunctionComponent<
     try {
       await deleteFromSecureStore(AUTH_TOKEN);
       setIsAuthenticated(false);
+      setError(undefined);
     } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
-      }
+      const errorMessage = errorHandler(error);
+      setError(errorMessage);
     } finally {
       setIsLoading(false);
     }

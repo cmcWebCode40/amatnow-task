@@ -1,6 +1,7 @@
 import React, { ForwardedRef, forwardRef, useState } from 'react';
 import { TextInput, TextInputProps } from 'react-native';
 
+import { colors } from '../libs/constants';
 import Icon from './Icon';
 import { StyledPressable, StyledTextInput, StyledView } from './nativeWrapper';
 import Typography from './Typography';
@@ -17,8 +18,7 @@ const FormInput: React.FunctionComponent<FormInputProps> = forwardRef(
     { className, errorMessage, isError, hasPassword, ...rest },
     ref: ForwardedRef<TextInput>
   ) => {
-    const [passwordVisibility, setPasswordVisibility] =
-      useState<boolean>(false);
+    const [passwordVisibility, setPasswordVisibility] = useState<boolean>(true);
 
     const handlePasswordVisibility = () => {
       setPasswordVisibility(!passwordVisibility);
@@ -26,11 +26,10 @@ const FormInput: React.FunctionComponent<FormInputProps> = forwardRef(
 
     const PasswordIcon = (
       <StyledPressable onPress={handlePasswordVisibility}>
-        {passwordVisibility ? (
-          <Icon color='#999' name='visibility' />
-        ) : (
-          <Icon color='#999' name='visibility-off' />
-        )}
+        <Icon
+          color={colors['gray-light']}
+          name={!passwordVisibility ? 'visibility' : 'visibility-off'}
+        />
       </StyledPressable>
     );
 
@@ -42,7 +41,7 @@ const FormInput: React.FunctionComponent<FormInputProps> = forwardRef(
             autoCapitalize={'none'}
             className={`${className} items-center justify-between w-11/12 py-4`}
             ref={ref}
-            secureTextEntry={passwordVisibility}
+            secureTextEntry={hasPassword && passwordVisibility}
           />
           {hasPassword && PasswordIcon}
         </StyledView>
