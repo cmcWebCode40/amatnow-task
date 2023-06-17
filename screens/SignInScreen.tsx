@@ -6,7 +6,7 @@ import {
   Button,
   FormInput,
   Layout,
-  Loader,
+  OverlayLoader,
   Segment,
   StyledView,
 } from '../components';
@@ -16,8 +16,8 @@ import { LoginAuthFields } from '../libs/types';
 import useAuth from '../libs/useAuth';
 
 const formInitialValues = {
-  email: '',
-  password: '',
+  email: 'johndoe@gmail.com',
+  password: 'password',
 };
 const segmentItems = [' Create Account', 'Login'];
 
@@ -29,8 +29,8 @@ const SignInScreen: React.FunctionComponent = () => {
   };
   return (
     <Layout withScrollView={false}>
-      <>
-        {isLoading && <Loader isLoading={isLoading} />}
+      <React.Fragment>
+        {isLoading && <OverlayLoader isLoading={isLoading} />}
         <StyledView className='mt-4 mb-5'>
           <Segment items={segmentItems} />
         </StyledView>
@@ -50,7 +50,6 @@ const SignInScreen: React.FunctionComponent = () => {
             handleSubmit,
           }) => (
             <StyledView className='flex-1 justify-between flex-col h-auto mb-4'>
-              {isLoading && <Loader isLoading={isLoading} />}
               <KeyboardAwareScrollView
                 style={{
                   minHeight: 300,
@@ -97,7 +96,7 @@ const SignInScreen: React.FunctionComponent = () => {
               </KeyboardAwareScrollView>
               <StyledView className='space-y-5'>
                 <Button
-                  disabled={!isValid}
+                  disabled={!isValid || isLoading}
                   onPress={() => {
                     handleSubmit();
                   }}
@@ -116,7 +115,7 @@ const SignInScreen: React.FunctionComponent = () => {
             </StyledView>
           )}
         </Formik>
-      </>
+      </React.Fragment>
     </Layout>
   );
 };
