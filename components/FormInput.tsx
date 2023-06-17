@@ -25,22 +25,22 @@ const FormInput: React.FunctionComponent<FormInputProps> = forwardRef(
     };
 
     const PasswordIcon = (
-      <StyledPressable className='pr-3' onPress={handlePasswordVisibility}>
+      <StyledPressable onPress={handlePasswordVisibility}>
         {passwordVisibility ? (
-          <Icon color='#ccc' name='visibility' />
+          <Icon color='#999' name='visibility' />
         ) : (
-          <Icon color='#ccc' name='visibility-off' />
+          <Icon color='#999' name='visibility-off' />
         )}
       </StyledPressable>
     );
 
     return (
       <StyledPressable>
-        <StyledView className='flex-row justify-between items-center border-none border-black bg-gray rounded-md'>
+        <StyledView className='flex-row px-4 justify-between items-center border-none border-black bg-gray rounded-md'>
           <StyledTextInput
             {...rest}
             autoCapitalize={'none'}
-            className={`${className} items-center justify-between w-11/12 py-4 px-3`}
+            className={`${className} items-center justify-between w-11/12 py-4`}
             ref={ref}
             secureTextEntry={passwordVisibility}
           />

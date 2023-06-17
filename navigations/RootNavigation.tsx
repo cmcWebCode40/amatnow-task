@@ -4,12 +4,14 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { HOME_SCREEN, SIGNIN_SCREEN } from '../libs/constants';
-import { RootNavigationScreens } from '../libs/types';
+import useAuth from '../libs/useAuth';
 import { HomeScreen, SignInScreen } from '../screens';
 
-const Stack = createNativeStackNavigator<RootNavigationScreens>();
+const Stack = createNativeStackNavigator<any>();
 
 const RootNavigation = () => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>
@@ -18,8 +20,11 @@ const RootNavigation = () => {
             headerShown: false,
           }}
         >
-          <Stack.Screen name={SIGNIN_SCREEN} component={SignInScreen} />
-          <Stack.Screen name={HOME_SCREEN} component={HomeScreen} />
+          {!isAuthenticated ? (
+            <Stack.Screen name={SIGNIN_SCREEN} component={SignInScreen} />
+          ) : (
+            <Stack.Screen name={HOME_SCREEN} component={HomeScreen} />
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
