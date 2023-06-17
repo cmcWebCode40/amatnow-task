@@ -16,8 +16,8 @@ import { LoginAuthFields } from '../libs/types';
 import useAuth from '../libs/useAuth';
 
 const formInitialValues = {
-  email: 'johndoe@gmail.com',
-  password: 'password',
+  email: '',
+  password: '',
 };
 const segmentItems = [' Create Account', 'Login'];
 
